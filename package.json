@@ -1,0 +1,16 @@
+{
+  "name": "tutorial-three.js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel serve src/index.html --out-dir ./docs",
+    "build": "parcel build src/index.html --out-dir ./docs"
+  },
+  "dependencies": {
+    "three": "^0.126.1"
+  },
+  "devDependencies": {
+    "parcel": "1.12.3"
+  }
+}
