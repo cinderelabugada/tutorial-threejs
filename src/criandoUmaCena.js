@@ -18,7 +18,7 @@ let geometry, material, mesh;
 /**
  * init: função que inicializa a rendenrização
  */
-function init() {
+function criandoUmaCena() {
 
   /* configura o posicionamento da câmera */
   camera = new PerspectiveCamera(
@@ -36,8 +36,14 @@ function init() {
 
   /* cria um objeto 3D */
   geometry = new BoxGeometry( 0.2, 0.2, 0.2 );
-  /* cria um material para esse objeto */
-  material = new MeshNormalMaterial(  );
+
+  /* Cria um material para esse objeto.
+   * No caso específico do MeshNormalMaterial, cada porção do
+   * mesh é coberta com uma textura que reflete a direção de sua normal.
+   * Esse tipo de textura é importante para compreender quais são as
+   * normais em diversos pontos do mesh, uma vez que essa direção influência
+   * em outro processos como reflexão dentre outras */
+  material = new MeshNormalMaterial();
 
   /* outro tipo de material */
   // material = new MeshBasicMaterial({ color: 0x00ff00 });
@@ -60,7 +66,6 @@ function init() {
 
   /* insere no elemento do documento */
   document.body.appendChild( renderer.domElement );
-
 }
 
 /**
@@ -83,7 +88,8 @@ function animation( time ) {
 
 
 /**
- * importe esse init no seu arquivo principal e chame a função init para
- * iniciar a renderização
+ * importe essa função criandoUmaCena no seu arquivo principal
+ * e a chame para realizar a renderização desse exemplo.
  */
-export default init
+export default criandoUmaCena 
+
