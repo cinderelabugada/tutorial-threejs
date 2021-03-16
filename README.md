@@ -1,10 +1,11 @@
 # Tutorial ThreeJS
 
-Seguindo a [documentação](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene).
+O presente tutorial apresenta a biblioteca Three.JS para desenvolvimento de jogos em Javascript. Ele representa um compilado da documentação oficial da biblioteca e de diversas referências sugeridas pela documentação.
 
-## 1. [criandoUmaCena.js](./src/criandoUmaCena.js) (Creating a scene)
 
-O primeiro tópico da documentação apresenta aos desenvolvedores como criar a primeira cena. Essa primeira cena consiste em adicionarmos um cubo e uma câmera, e posicionarmos esses dois objetos afim de termos uma cena com um cubo girando. Em resumo esse primeiro tópico introduz esses conceitos de cena como objeto e câmera, assim como a atualização dinâmica desses objetos no Three.JS.
+## 1. [criandoUmaCena.js](./src/criandoUmaCena.js) ([Creating a scene](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene))
+
+O primeiro tópico abordado está presente na [documentação oficial](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), e apresenta aos desenvolvedores como criar a primeira cena. Essa primeira cena consiste em adicionarmos um cubo e uma câmera, e posicionarmos esses dois objetos afim de termos uma cena com um cubo girando. Em resumo esse primeiro tópico introduz esses conceitos de cena como objeto e câmera, assim como a atualização dinâmica desses objetos no Three.JS.
 
 ### Configuração do ambiente de desenvolvimento
 
@@ -18,6 +19,11 @@ A segunda função utilizada por essa composição é a função `animation`. Es
 
 Por fim, para utilizar essa renderização em nosso projeto, basta importarmos a função criandoUmaCena no arquivo index.js e realizarmos sua chamada.
 
+## Referências
+
+1. [Creating a scene](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene).
+2. [Begin with 3D WebGl by Rachel Smith](https://codepen.io/rachsmith/post/beginning-with-3d-webgl-pt-1-the-scene) 
+3. [Three.js Fundamentals](https://threejsfundamentals.org/threejs/lessons/threejs-fundamentals.html)
 ## Como executar o projeto
 
 ```bash
