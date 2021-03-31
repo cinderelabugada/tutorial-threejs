@@ -3,7 +3,20 @@ import {
   BoxGeometry, // cria geometria caixa
   MeshNormalMaterial, // cria um novo tipo de material
   MeshBasicMaterial, // cria um novo tipo de material
+  MeshLambertMaterial,
+  LineBasicMaterial,
+
   Mesh, // cria objeto de mesh
+
+  // lights
+  PointLight,
+  AmbientLight,
+  DirectionalLight,
+
+  // linhas
+  Vector3,
+  Line,
+  BufferGeometry,
 
   // renderização
   Scene, // cria cena
@@ -46,16 +59,68 @@ function init() {
    * que essa direção influência em outro processos como reflexão
    * dentre outras
    */
-  material = new MeshNormalMaterial();
+  //material = new MeshNormalMaterial();
 
   /* outro tipo de material */
-  //material = new MeshBasicMaterial({ color: 0x00ff00 });
+  //material = new MeshBasicMaterial({ color: 0x404040 });
+
+  material = new MeshLambertMaterial({ color: 0xFFFFFF })
 
   /* cria um malha com a geometria e o material */
-  mesh = new Mesh( geometry, material );
+  mesh = new Mesh(geometry, material);
 
   /* adiciona o mesh na cena */
   scene.add( mesh );
+
+  // luz pontual
+  const lightP = new PointLight(
+    0xFF5500, // cor da luz
+    1 // intensidade
+  )
+  // luz de ambiente
+  const lightA = new AmbientLight(0xFF5500)
+
+  // luz direcional
+  const lightD = new DirectionalLight(0xFF5500)
+
+  lightP.position.set(10, 0, 25)
+  lightD.position.set(10, 0, 25)
+  
+  scene.add(lightP)
+  //scene.add(lightA)
+  //scene.add(lightD)
+
+
+  const pointsX = [
+    new Vector3(-0.3, 0, 0),
+    new Vector3(10, 0, 0)
+  ]
+
+  const pointsY = [
+    new Vector3(0, -0.3, 0),
+    new Vector3(0, 10, 0)
+  ]
+  
+  const pointsZ = [
+    new Vector3(0, 0, -5),
+    new Vector3(0, 0, 10)
+  ]
+
+  const materialLineZ = new LineBasicMaterial({ color: 0x0000FF })
+  const materialLineY = new LineBasicMaterial({ color: 0x00FF00 })
+  const materialLineX = new LineBasicMaterial({ color: 0xFF0000 })
+
+  const gLineX = new BufferGeometry().setFromPoints(pointsX)
+  const lineX = new Line(gLineX, materialLineX)
+  scene.add(lineX)
+
+  const gLineY = new BufferGeometry().setFromPoints(pointsY)
+  const lineY = new Line(gLineY, materialLineY)
+  scene.add(lineY)
+
+  const gLineZ = new BufferGeometry().setFromPoints(pointsZ)
+  const lineZ = new Line(gLineZ, materialLineZ)
+  scene.add(lineZ)
 
   /* define os parâmetros de renderização */
   /* cria o objeto de renderização */

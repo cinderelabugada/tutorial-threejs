@@ -17,6 +17,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 import bonecoGLB from './assets/boneco.glb'
 
+import eixos from './eixos'
 
 /* objetos globais para serem utilizados na função de animação [final arquivo] */
 let camera, scene, renderer;
@@ -26,10 +27,15 @@ let geometry, material, mesh;
  * init: função que inicializa a rendenrização
  */
 export const init = () => {
-
-  camera = new PerspectiveCamera( 80, window.innerWidth / window.innerHeight, 0.1, 10000);
-  camera.position.set( 5, 5, 5);
-  camera.lookAt( 0, -5, 0)
+  
+  /* inicializa a camera */
+  camera = new PerspectiveCamera(
+    120, // campo de visão
+    window.innerWidth / window.innerHeight,
+    0.1,
+    10000
+  );
+  camera.position.set(-6, 6, 0);
 
   /* cria uma nova cena */
   scene = new Scene();
@@ -39,28 +45,24 @@ export const init = () => {
     bonecoGLB,
     function (gltf) {
       scene.add( gltf.scene )
-      console.log(gltf.scene)
     },
     undefined,
     error => console.log(error)
   );
 
   const light = new AmbientLight( 0x404040 )
+  const light2 = new PointLight( 0xFFFF00 )
+
+  light2.position.set(10, 5, 0)
 
   scene.add(light)
+  scene.add(light2)
 
-  /* cria um objeto 3D */
-  geometry = new BoxGeometry( 1, 1, 1 );
-  /* cria um material para esse objeto */
-  material = new MeshNormalMaterial(  );
+  const eixosG = eixos()
 
-  /* outro tipo de material */
-  // material = new MeshBasicMaterial({ color: 0x00ff00 });
-
-  /* cria um malha com a geometria e o material */
-  mesh = new Mesh( geometry, material );
-
- // scene.add(mesh)
+  scene.add(eixosG.x)
+  scene.add(eixosG.y)
+  scene.add(eixosG.z)
 
   /* define os parâmetros de renderização */
   /* cria o objeto de renderização */
@@ -86,7 +88,7 @@ export const init = () => {
 function animation( time ) {
 
   /* rotaciona a camera */
-  camera.rotation.y += 0.01
+  //camera.rotation.z += 0.01
   //console.log(camera.rotation.y)
 
   /* atualiza a renderização */

@@ -24,6 +24,9 @@ Por fim, para utilizar essa renderização em nosso projeto, basta importarmos a
 1. [Creating a scene](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene).
 2. [Begin with 3D WebGl by Rachel Smith](https://codepen.io/rachsmith/post/beginning-with-3d-webgl-pt-1-the-scene) 
 3. [Three.js Fundamentals](https://threejsfundamentals.org/threejs/lessons/threejs-fundamentals.html)
+
+100. [Editor Three.JS](https://threejs.org/editor/)
+
 ## Como executar o projeto
 
 ```bash
