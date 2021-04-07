@@ -36,7 +36,7 @@ import bonecoGLB from './assets/boneco.glb'
 import bauGLB from './assets/bau.glb'
 
 /* objetos globais para serem utilizados na função de animação [final arquivo] */
-let camera, scene, renderer, controls;
+let scene, renderer, controls;
 let geometry, material, mesh;
 
 /*
@@ -57,10 +57,11 @@ const models = {
 /**
  * init: função que inicializa a rendenrização
  */
+let cameras = {}
 function init() {
 
   /* configura o posicionamento da câmera */
-  camera = new PerspectiveCamera(
+  cameras[0] = new PerspectiveCamera(
     45, // campo de visão
     window.innerWidth / window.innerHeight, // razão de aspecto
     0.01, // cliping de elementos próximos
@@ -68,7 +69,18 @@ function init() {
   );
   
   /* define posição da câmera */
-  camera.position.set(7, 5, 7);
+  cameras[0].position.set(7, 5, 7);
+
+  cameras[1] = new PerspectiveCamera(
+    45, // campo de visão
+    window.innerWidth / window.innerHeight, // razão de aspecto
+    0.01, // cliping de elementos próximos
+    100 // cliping de elementos distantes
+  );
+  
+  /* define posição da câmera */
+  cameras[1].position.set(5, 7, -5);
+  cameras[1].lookAt(0, 0, 0)
 
   /* cria uma nova cena */
   scene = new Scene();
@@ -114,7 +126,7 @@ function init() {
 
   // controles
   controls = new OrbitControls(
-    camera,
+    cameras[0],
     renderer.domElement
   );
 
@@ -126,6 +138,7 @@ function init() {
  * animation: cria a função de animação, modifica os mesh e objetos da cena
  * time: ticks ou frames
  */
+let curCamera = 0
 function animation( time ) {
   /* modificação do mesh com o peração de rotação */
   //mesh.rotation.x = time / 2000;
@@ -135,11 +148,11 @@ function animation( time ) {
   // camera.rotation.y += 0.01 
 
   /* atualiza a renderização */
-  renderer.render( scene, camera );
+  renderer.render( scene, cameras[curCamera] );
 }
 
 function setupKeyControls() {
-	document.onkeydown = function(e) {
+  document.onkeydown = function(e) {
 		switch (e.keyCode) {
 			case 37:
 			models['boneco'].gltf.scene.rotation.x += 0.1;
@@ -165,6 +178,13 @@ function setupKeyControls() {
 			case 68:
 			models['boneco'].gltf.scene.position.x += 0.1;
 			break;
+      case 49:
+        curCamera = 0
+        break;
+
+      case 50:
+        curCamera = 1
+        break;
 
 		}
 	};

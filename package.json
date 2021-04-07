@@ -4,10 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "parcel serve src/index.html --out-dir ./docs",
-    "build": "parcel build src/index.html --out-dir ./docs"
+    "start": "parcel serve src/index.html",
+    "build": "parcel build src/index.html"
   },
   "dependencies": {
+    "examples": "^0.1.0",
     "three": "^0.126.1"
   },
   "devDependencies": {

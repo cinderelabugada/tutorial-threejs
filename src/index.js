@@ -1,13 +1,6 @@
-//import criandoUmaCena from './criandoUmaCena' // es6
-//import cuboGirando from './cuboGirando'
-import cuboControles from './cuboControles'
-//import './animations'
-//import testeGeometry from './testeGeometry'
-//import { init } from './linhas'
-//import { init } from './boneco'
+import init from './main'
+import './basico/index.css'
 
-import './index.css'
-
-cuboControles()
+init()
 
 

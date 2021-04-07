@@ -23,7 +23,7 @@ function init() {
 
   /* configura o posicionamento da câmera */
   camera = new PerspectiveCamera(
-    45, // campo de visão
+    90, // campo de visão
     window.innerWidth / window.innerHeight, // razão de aspecto
     0.01, // cliping de elementos próximos
     10 // cliping de elementos distantes
