@@ -9,12 +9,15 @@ class FirstControls {
 		switch (e.keyCode) {
 			// left
 			case 37:
-      	this.object.rotation.y -= 0.1
+				this.object.rotation.y -= 0.1
 				break
 
 			// up
 			case 38:
-				this.object.position.x += 0.1
+//				this.object.position.x += 0.1
+				console.log(this.object.rotation)
+				this.object.position.x += Math.sin(this.object.rotation.y)
+				this.object.position.z += Math.cos(this.object.rotation.y)
 				break
 
 			// right
@@ -24,7 +27,10 @@ class FirstControls {
 
 			// down
 			case 40:
-				this.object.position.x -= 0.1
+				this.object.position.x -= Math.sin(this.object.rotation.y)
+				this.object.position.z -= Math.cos(this.object.rotation.y)
+
+//				this.object.position.x -= 0.1
 				break
 		}
 	}

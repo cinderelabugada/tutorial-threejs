@@ -11,6 +11,7 @@ import {
   PointLight,
 
   AxesHelper,
+  Vector3,
 
   // renderização
   Scene, // cria cena
@@ -21,10 +22,6 @@ import {
 import {
   OrbitControls
 } from 'three/examples/jsm/controls/OrbitControls'
-
-import {
-  FirstPersonControls
-} from 'three/examples/jsm/controls/FirstPersonControls.js'
 
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
@@ -82,6 +79,7 @@ function init() {
       objects.player.threejs.scale.set(
         0.5, 0.5, 0.5
       )
+      objects.player.v = new Vector3(0, 0, 0)
       scene.add(objects.player.threejs)
       objects.player.controls = 
         new FirstControls(objects.player.threejs)
@@ -89,11 +87,13 @@ function init() {
 
   objects.room = {}
   objects.room.threejs = new Mesh(
-    new BoxGeometry(20, 20, 20),
+    new PlaneGeometry(20, 20),
     new MeshBasicMaterial({
-      color: 0x333333, side: DoubleSide
+      color: 0x555555, side: DoubleSide
     })
   )
+
+  objects.room.threejs.rotation.x = Math.PI / 2
 
   scene.add(objects.room.threejs)
 
@@ -148,6 +148,11 @@ function init() {
  * time: ticks ou frames
  */
 function animation( time ) {
+  //if (objects.player.threejs) {
+  //  objects.player.threejs.position.copy(
+  //    (new Vector3(1, 1, 1)).multiply(objects.player.v)
+  //  )
+  //}
   //objects.plano.threejs.rotation.x = time / 2000;
   //objects.plano.threejs.rotation.z = time / 1000;
 
