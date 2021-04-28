@@ -14,8 +14,6 @@ class FirstControls {
 
 			// up
 			case 38:
-//				this.object.position.x += 0.1
-				console.log(this.object.rotation)
 				this.object.position.x += Math.sin(this.object.rotation.y)
 				this.object.position.z += Math.cos(this.object.rotation.y)
 				break
@@ -29,8 +27,6 @@ class FirstControls {
 			case 40:
 				this.object.position.x -= Math.sin(this.object.rotation.y)
 				this.object.position.z -= Math.cos(this.object.rotation.y)
-
-//				this.object.position.x -= 0.1
 				break
 		}
 	}

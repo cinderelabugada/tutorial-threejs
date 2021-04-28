@@ -8,7 +8,9 @@
     "build": "parcel build src/index.html"
   },
   "dependencies": {
+    "cannon": "^0.6.2",
     "examples": "^0.1.0",
+    "geometry": "^0.1.0",
     "three": "^0.126.1"
   },
   "devDependencies": {

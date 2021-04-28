@@ -17,10 +17,10 @@ export function getRandomInterval(min, max, sign) {
           * (Math.random() >= 0.5 ? -1 : 1)
 }
 
-export function getRandomCoords(min, max) {
-  const x = getRandomInterval(min, max)
-  const y = getRandomInterval(min, max)
-  const z = getRandomInterval(min, max)
+export function getRandomCoords(min, max, sign=false) {
+  const x = getRandomInterval(min, max, sign)
+  const y = getRandomInterval(min, max, sign)
+  const z = getRandomInterval(min, max, sign)
 
   return [x, y, z]
 }

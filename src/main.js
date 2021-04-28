@@ -21,7 +21,7 @@ import {
 
 import {
   OrbitControls
-} from 'three/examples/jsm/controls/OrbitControls'
+} from 'three/examples/jsm/controls/orbitcontrols'
 
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
